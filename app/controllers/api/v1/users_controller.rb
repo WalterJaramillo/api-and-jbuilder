@@ -16,6 +16,7 @@ class Api::V1::UsersController < ApplicationController
 
   # POST /users
   def create
+    #curl -i -H "Content-Type:application/json" -X POST http://localhost:3000/api/v1/users -d '{"username": "Alan Brito"}'
     @user = User.new(user_params)
 
     if @user.save
@@ -27,6 +28,7 @@ class Api::V1::UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    #curl -i -H "Content-Type:application/json" -X PUT http://localhost:3000/api/v1/users/1 -d '{"username": "Viaa"}
     if @user.update(user_params)
       render json: @user
     else
@@ -36,6 +38,7 @@ class Api::V1::UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    #curl -i -H "Content-Type:application/json" -X DELETE http://localhost:3000/api/v1/users/1 -d '{"username": "Viaa"}'
     @user.destroy
   end
 
@@ -47,6 +50,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params  # permite o niega los parametros que nos pueden enviar en este caso solo es permitido username
-      params.require(:user).permit(:username)
+      params.require(:user).permit(:username,:correo)
     end
 end
